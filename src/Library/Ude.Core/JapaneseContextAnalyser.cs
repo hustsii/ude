@@ -214,10 +214,18 @@ namespace Ude.Core
      
             // Only 2-bytes characters are of our interest
             int order = (charLen == 2) ? GetOrder(buf, offset) : -1;
-            if (order != -1 && lastCharOrder != -1) {
+            if (charLen == 1 && buf[offset] >= 161 && buf[offset] <= 223)
+            {
                 totalRel++;
-                // count this sequence to its category counter
-                relSample[jp2CharContext[lastCharOrder, order]]++;
+            }
+            else
+            {
+                if (order != -1 && lastCharOrder != -1)
+                {
+                    totalRel++;
+                    // count this sequence to its category counter
+                    relSample[jp2CharContext[lastCharOrder, order]]++;
+                }
             }
             lastCharOrder = order;
         }
