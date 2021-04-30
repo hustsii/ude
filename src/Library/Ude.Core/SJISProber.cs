@@ -85,10 +85,10 @@ namespace Ude.Core
                     int charLen = codingSM.CurrentCharLen;
                     if (i == offset) {
                         lastChar[1] = buf[offset];
-                        contextAnalyser.HandleOneChar(lastChar, 2-charLen, charLen);
+                        contextAnalyser.HandleOneChar(lastChar, 2-charLen, charLen,true);
                         distributionAnalyser.HandleOneChar(lastChar, 0, charLen);
                     } else {
-                        contextAnalyser.HandleOneChar(buf, i+1-charLen, charLen);
+                        contextAnalyser.HandleOneChar(buf, i+1-charLen, charLen,true);
                         distributionAnalyser.HandleOneChar(buf, i-1, charLen);
                     }
                 }
